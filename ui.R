@@ -1,7 +1,7 @@
 library(shiny)
-
+library(ggplot2)
 shinyUI(fluidPage(
-  titlePanel("Uploading Files"),
+  titlePanel("Uploading Files for Bland-Altman Plots"),
   sidebarLayout(
     sidebarPanel(
       fileInput('file1', 'Choose CSV File',
