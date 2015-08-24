@@ -1,5 +1,6 @@
 library(shiny)
 library(ggplot2)
+library(BlandAltmanLeh)
 shinyServer(function(input, output) {
   
   output$plot <- renderPlot({
@@ -11,8 +12,7 @@ shinyServer(function(input, output) {
     
     a <- read.csv(inFile$datapath, header=input$header, sep=input$sep, 
                       quote=input$quote)
-    
-    plot(a)
+    ggplot(a, aes(x=HPLC, y=ELISA)) + geom_point()
   })
   
   output$summary <- renderPrint({

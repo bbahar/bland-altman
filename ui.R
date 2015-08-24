@@ -1,5 +1,6 @@
 library(shiny)
 library(ggplot2)
+library(BlandAltmanLeh)
 shinyUI(fluidPage(
   titlePanel("Uploading Files for Bland-Altman Plots"),
   sidebarLayout(
