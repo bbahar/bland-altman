@@ -20,13 +20,17 @@ shinyUI(fluidPage(
                    c(None='',
                      'Double Quote'='"',
                      'Single Quote'="'"),
-                   '"')
+                   '"'),
+      textInput('Method1',label = 'Enter Method 1 Name', value = 'Method1'),
+      textInput('Method2',label = 'Enter Method 2 Name', value = 'Method2')
+      
     ),
     mainPanel(
       tabsetPanel(type = "tabs", 
                   tabPanel("Plot", plotOutput("plot")), 
                   tabPanel("Summary", verbatimTextOutput("summary")), 
-                  tabPanel("Table", tableOutput("table"))
+                  tabPanel("Table", tableOutput("table")),
+                  tabPanel("Data",textOutput("Data"))
       )
     )
   )
