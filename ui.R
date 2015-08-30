@@ -25,10 +25,10 @@ shinyUI(fluidPage(
     ),
     mainPanel(
       tabsetPanel(type = "tabs", 
-                  tabPanel("Plot 1", plotOutput("plot1")), 
-                  tabPanel("Plot 2", plotOutput("plot2")), 
-                  tabPanel("Summary", verbatimTextOutput("summary")), 
-                  tabPanel("Table", tableOutput("table"))
+                  tabPanel("BA 1 (base)", plotOutput("plot1")), 
+                  tabPanel("BA 2 (ggplot)", plotOutput("plot2")), 
+                  tabPanel("BA Statistics", verbatimTextOutput("summary")), 
+                  tabPanel("Data", tableOutput("table"))
       )
     )
   )
