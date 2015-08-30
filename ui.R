@@ -11,7 +11,7 @@ shinyUI(fluidPage(
                          '.csv')),
       tags$hr(),
       checkboxInput('header', 'Header', TRUE),
-      radioButtons('sep', 'Separator',
+      radioButtons('sep', 'Data Separator',
                    c(Comma=',',
                      Semicolon=';',
                      Tab='\t'),
@@ -20,13 +20,16 @@ shinyUI(fluidPage(
                    c(None='',
                      'Double Quote'='"',
                      'Single Quote'="'"),
-                   '"')
-      
+                   '"'),
+      tags$hr(), 
+      radioButtons('radio', 'Select Plot Type',
+                   choices = list("Base"= 1,
+                                  "ggplot2"= 2))
     ),
     mainPanel(
       tabsetPanel(type = "tabs", 
-                  tabPanel("BA 1 (base)", plotOutput("plot1")), 
-                  tabPanel("BA 2 (ggplot)", plotOutput("plot2")), 
+                  tabPanel("Selected Plot", plotOutput("plot1")), 
+#                 tabPanel("BA 2 (ggplot)", plotOutput("plot2")), 
                   tabPanel("BA Statistics", verbatimTextOutput("summary")), 
                   tabPanel("Data", tableOutput("table"))
       )
