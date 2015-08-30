@@ -2,7 +2,7 @@ library(shiny)
 library(ggplot2)
 library(BlandAltmanLeh)
 shinyUI(fluidPage(
-  titlePanel("Uploading Files for Bland-Altman Plots"),
+  titlePanel("Bland-Altman Plot"),
   sidebarLayout(
     sidebarPanel(
       fileInput('file1', 'Choose CSV File',
@@ -25,7 +25,8 @@ shinyUI(fluidPage(
     ),
     mainPanel(
       tabsetPanel(type = "tabs", 
-                  tabPanel("Plot", plotOutput("plot")), 
+                  tabPanel("Plot 1", plotOutput("plot1")), 
+                  tabPanel("Plot 2", plotOutput("plot2")), 
                   tabPanel("Summary", verbatimTextOutput("summary")), 
                   tabPanel("Table", tableOutput("table"))
       )

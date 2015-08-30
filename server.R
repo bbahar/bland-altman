@@ -3,7 +3,7 @@ library(ggplot2)
 library(BlandAltmanLeh)
 shinyServer(function(input, output) {
   
-  output$plot <- renderPlot({
+  output$plot1 <- renderPlot({
 
     inFile <- input$file1
     
@@ -19,7 +19,21 @@ shinyServer(function(input, output) {
     geom_point() +
     labs(x='Method Mean',y='Method Difference')
   })
-  
+  output$plot2 <- renderPlot({
+    
+    inFile <- input$file1
+    
+    if (is.null(inFile))
+      return(NULL)
+    
+    a <- read.csv(inFile$datapath, header=input$header, sep=input$sep, 
+                  quote=input$quote)
+    a[3] <- (a[2]-a[1])
+    a[4] <- (a[2]+a[1])/2
+    names(a) <- c("a", "b","c","d")
+    bland.altman.plot(a$a, a$b, xlab="Mean measurement",
+                      ylab="Differences", conf.int=.95)
+  })
   output$summary <- renderPrint({
     
     inFile <- input$file1
