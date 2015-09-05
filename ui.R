@@ -24,12 +24,15 @@ shinyUI(fluidPage(
       tags$hr(), 
       radioButtons('radio', 'Select Plot Type',
                    choices = list("Base"= 1,
-                                  "ggplot2"= 2))
+                                  "ggplot2"= 2)),
+      tags$hr(),
+      radioButtons('format', 'Document format', c('PDF', 'HTML', 'Word'),
+                   inline = TRUE),
+      downloadButton('downloadReport')
     ),
     mainPanel(
       tabsetPanel(type = "tabs", 
-                  tabPanel("Selected Plot", plotOutput("plot1")), 
-#                 tabPanel("BA 2 (ggplot)", plotOutput("plot2")), 
+                  tabPanel("Selected Plot", plotOutput("plot")), 
                   tabPanel("BA Statistics", verbatimTextOutput("summary")), 
                   tabPanel("Data", tableOutput("table"))
       )
