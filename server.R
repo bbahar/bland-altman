@@ -1,69 +1,123 @@
 library(shiny)
-library(ggplot2)
-library(BlandAltmanLeh)
-shinyServer(function(input, output) {
+library(mcr)
+library(shinydashboard)
+library(rhandsontable)
+
+shinyServer(function(input, output, session) {
   
   datasetInput <- reactive({
-    inFile <- input$file1
-    if (is.null(inFile))
-      return(NULL)
-    read.csv(inFile$datapath, header=input$header, sep=input$sep, 
-                  quote=input$quote)
+    if (is.null(input$hot)) {
+      mat <- data.frame(Method1=abs(rnorm(10,10,10)), Method2=abs(rnorm(10,10,10)))
+    } else {
+      mat <- hot_to_r(input$hot)
+    }
   })
   
-  output$plot <- renderPlot({
-    inFile <- input$file1
-    if (is.null(inFile))
-      return(NULL)
-    a <- read.csv(inFile$datapath, header=input$header, sep=input$sep, 
-                      quote=input$quote)
-    a[3] <- (a[1]-a[2])
-    a[4] <- (a[2]+a[1])/2
-    names(a) <- c("a", "b","c","d")
-    if (input$radio == 1) {
-    bland.altman.plot(a$a, a$b, 
-                      xlab="Mean measurement",
-                      ylab="Difference")} else {
-    g <- bland.altman.plot(a$a, a$b,
-         graph.sys="ggplot2")
-         print (g + xlab("Mean measurement") + 
-         ylab("Difference"))
-                      }
+  #   output$varselect <- renderUI({
+  #     if (identical(datasetInput(), '') || identical(datasetInput(), 
+  #                                                    data.frame())) 
+  #       return(NULL)
+  #     
+  #     selectInput("var1", h5("Method 1 (Reference)"),
+  #                 names(datasetInput()), names(datasetInput()), 
+  #                 multiple =FALSE)            
+  #   })
+  #   
+  #   output$varselect2 <- renderUI({
+  #     if (identical(datasetInput(), '') || identical(datasetInput(), 
+  #                                                    data.frame())) 
+  #       return(NULL)
+  #     
+  #     selectInput("var2", h5("Method 2 (Test)"),
+  #                 names(datasetInput()), names(datasetInput()), 
+  #                 multiple =FALSE)            
+  #   })
+  
+  output$plot1 <- renderPlot({
+    
+    a <- datasetInput()
+    if (is.null(a)) {
+      return(NULL)} else {
+        names(a) <- c('M1', 'M2')
+        data1 <- mcreg(a$M1,a$M2,
+                       mref.name=input$m1, mtest.name=input$m2)
+        MCResult.plotDifference(data1, plot.type=input$batype,
+                                add.grid = TRUE)
+        
+      }
+    
+  })
+  
+  #   output$info2 <- renderPrint({
+  #     
+  #     a <- datasetInput()
+  #     if (is.null(a)) {
+  #       return(NULL)} else {
+  #         nearPoints(a, input$plot_click2, xvar=input$var1, 
+  #                    yvar=input$var2, maxpoints = 1)}
+  #   })
+  
+  output$plot2 <- renderPlot({
+    
+    a <- datasetInput()
+    if (is.null(a)) {
+      return(NULL)} else {
+        names(a) <- c("M1", "M2")
+        data1 <- mcreg(a$M1,a$M2, error.ratio = input$syx, 
+                       method.reg = input$regmodel, method.ci = input$cimethod,
+                       method.bootstrap.ci = input$metbootci)
+        MCResult.plot(data1, ci.area=input$ciarea,
+                      add.legend=input$legend, identity=input$identity,
+                      add.cor=input$addcor, x.lab=input$m1,
+                      y.lab=input$m2, cor.method=input$cormet,
+                      equal.axis = TRUE, add.grid = TRUE)
+        
+      }
+    
   })
   
   output$summary <- renderPrint({
-    inFile <- input$file1
-    if (is.null(inFile))
-      return(NULL)
-    a <- read.csv(inFile$datapath, header=input$header, sep=input$sep, 
-                  quote=input$quote)
-    names(a) <- c("Method1", "Method2")
-    bland.altman.stats(a$Method1, a$Method2, 
-                       two = 1.96, mode = 2, conf.int = 0.95)
+    
+    a <- datasetInput()
+    if (is.null(a)) {
+      return(NULL)} else {
+        names(a) <- c("M1", "M2")
+        data1 <- mcreg(a$M1,a$M2, error.ratio = input$syx, 
+                       method.reg = input$regmodel, method.ci = input$cimethod,
+                       method.bootstrap.ci = input$metbootci,
+                       mref.name = input$m1, mtest.name = input$m2)
+        printSummary(data1)
+      }
+    
   })
   
-  output$table <- renderTable({
-    datasetInput()
+  output$hot <- renderRHandsontable({
+    a <- datasetInput()
+    rhandsontable(a)
+    
   })
+  
   output$downloadReport <- downloadHandler(
     filename = function() {
       paste('my-report', sep = '.', switch(
         input$format, PDF = 'pdf', HTML = 'html', Word = 'docx'
       ))
     },
-    
     content = function(file) {
+      
       src <- normalizePath('report.Rmd')
       owd <- setwd(tempdir())
       on.exit(setwd(owd))
       file.copy(src, 'report.Rmd')
-      
       library(rmarkdown)
       out <- render('report.Rmd', switch(
         input$format,
         PDF = pdf_document(), HTML = html_document(), Word = word_document()
       ))
       file.rename(out, file)
+      
     }
+    
   )
+  
 })
