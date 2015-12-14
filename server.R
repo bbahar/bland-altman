@@ -7,31 +7,12 @@ shinyServer(function(input, output, session) {
   
   datasetInput <- reactive({
     if (is.null(input$hot)) {
-      mat <- data.frame(Method1=abs(rnorm(10,10,10)), Method2=abs(rnorm(10,10,10)))
+      mat <- data.frame(Method1=abs(rnorm(10,1,10)), 
+                        Method2=abs(rnorm(10,1,10)))
     } else {
       mat <- hot_to_r(input$hot)
     }
   })
-  
-  #   output$varselect <- renderUI({
-  #     if (identical(datasetInput(), '') || identical(datasetInput(), 
-  #                                                    data.frame())) 
-  #       return(NULL)
-  #     
-  #     selectInput("var1", h5("Method 1 (Reference)"),
-  #                 names(datasetInput()), names(datasetInput()), 
-  #                 multiple =FALSE)            
-  #   })
-  #   
-  #   output$varselect2 <- renderUI({
-  #     if (identical(datasetInput(), '') || identical(datasetInput(), 
-  #                                                    data.frame())) 
-  #       return(NULL)
-  #     
-  #     selectInput("var2", h5("Method 2 (Test)"),
-  #                 names(datasetInput()), names(datasetInput()), 
-  #                 multiple =FALSE)            
-  #   })
   
   output$plot1 <- renderPlot({
     
@@ -47,15 +28,6 @@ shinyServer(function(input, output, session) {
       }
     
   })
-  
-  #   output$info2 <- renderPrint({
-  #     
-  #     a <- datasetInput()
-  #     if (is.null(a)) {
-  #       return(NULL)} else {
-  #         nearPoints(a, input$plot_click2, xvar=input$var1, 
-  #                    yvar=input$var2, maxpoints = 1)}
-  #   })
   
   output$plot2 <- renderPlot({
     

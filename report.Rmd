@@ -5,6 +5,21 @@ date: '`r Sys.Date()`'
 output: pdf_document
 ---
 
+```{r statistics, echo=FALSE, comment = '', warning = FALSE, message = FALSE}
+library(mcr)
+library(pander)
+a <- datasetInput()
+    if (is.null(a)) {
+      return(NULL)} else {
+        names(a) <- c("M1", "M2")
+        data1 <- mcreg(a$M1, a$M2, error.ratio = input$syx, 
+                      method.reg = input$regmodel, method.ci = input$cimethod,
+                      method.bootstrap.ci = input$metbootci,
+                      mref.name = input$var1, mtest.name = input$var2)
+        pander(getCoefficients(data1))
+      }
+```
+
 ```{r regression plot, echo=FALSE, results='markup'}
 library(mcr)
 a <- datasetInput()
@@ -34,26 +49,7 @@ a <- datasetInput()
       }
 ```
 
-#### Regression analysis summary:
-
-```{r statistics, echo=FALSE, comment = '', warning = FALSE, message = FALSE}
-library(mcr)
-library(pander)
-a <- datasetInput()
-    if (is.null(a)) {
-      return(NULL)} else {
-        names(a) <- c("M1", "M2")
-        data1 <- mcreg(a$M1, a$M2, error.ratio = input$syx, 
-                      method.reg = input$regmodel, method.ci = input$cimethod,
-                      method.bootstrap.ci = input$metbootci,
-                      mref.name = input$var1, mtest.name = input$var2)
-        pander(getCoefficients(data1))
-      }
-```
-
-#### Assessing aggreement between **`r input$m1`** (reference method) and **`r input$m2`** (test method) measurements by means of Bland-Altman and scatter plots.
-
-#### Data is processed using R language^1^, shiny web application framework^2^ and mcr package^3^. Shinydashboard^4^ and rhandsontable^5^ are used for website construction.
+#### Data is processed using R language^1^, shiny web application framework^2^ and mcr package^3^. Shinydashboard^4^ and rhandsontable^5^ are used for website construction. rmarkdown^6^ is used for converting results in to document files.
 
 ##### References and packages:
 
@@ -62,3 +58,4 @@ a <- datasetInput()
 3. mcr: Method Comparison Regression. R package version 1.2.1. URL http://CRAN.R-project.org/package=mcr
 4. shinydashboard: Create Dashboards with 'Shiny'. R package version 0.5.1. URL http://rstudio.github.io/shinydashboard/.
 5. rhandsontable: Interface to the 'Handsontable.js' Library. R package version 0.2.1. URL http://jrowen.github.io/rhandsontable/.
+6. rmarkdown: Dynamic Documents for R. R package version 0.8.1. URL http://rmarkdown.rstudio.com
