@@ -31,9 +31,7 @@ dashboardPage(
       tabItem(tabName = "info",
               h2("Method Comparison Using R and Shiny"),
               br(),
-              h4('This website is a product of R programming language (1) and 
-                 shiny web application framework (2). 
-                 Statistics are based on mcr package (3).'),     
+              h4('This website is a product of R programming language (1) and shiny web application framework (2). Statistics are based on mcr package (3). Shinydashboard(4) and rhandsontable(5) are used for website construction. Rmarkdown(6) is used for converting results in to document files'),
               br(),
               h4('How to:'),
               h4('1. Copy/paste or manually enter your data using the "Data" tab and 

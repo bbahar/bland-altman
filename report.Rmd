@@ -49,7 +49,7 @@ a <- datasetInput()
       }
 ```
 
-#### Data is processed using R language^1^, shiny web application framework^2^ and mcr package^3^. Shinydashboard^4^ and rhandsontable^5^ are used for website construction. rmarkdown^6^ is used for converting results in to document files.
+#### Data is processed using R language^1^, shiny web application framework^2^ and mcr package^3^. Shinydashboard^4^ and rhandsontable^5^ are used for website construction. Rmarkdown^6^ is used for converting results in to document files.
 
 ##### References and packages:
 
