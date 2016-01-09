@@ -31,7 +31,7 @@ dashboardPage(
       tabItem(tabName = "info",
               h2("Method Comparison Using R and Shiny"),
               br(),
-              h4('This website is a product of R programming language (1) and shiny web application framework (2). Statistics are based on mcr package (3). Shinydashboard(4) and rhandsontable(5) are used for website construction. Rmarkdown(6) is used for converting results in to document files'),
+              h4('This website is a product of R programming language(1) and shiny(2) web application framework. Statistics are based on mcr package(3). Shinydashboard(4) and rhandsontable(5) are used for website construction. Rmarkdown(6) is used for converting results in to document files'),
               br(),
               h4('How to:'),
               h4('1. Copy/paste or manually enter your data using the "Data" tab and 
@@ -72,10 +72,10 @@ dashboardPage(
                   )
       ),
       tabItem(tabName = "subitem1",
-              box(title = "Bland-Altman Plot", status='info', 
+              box(title = "Bland-Altman Plot", status='info', width = 8,
                   plotOutput("plot1")
                   ),
-              box(title = "Bland-Altman Options", status='info',
+              box(title = "Bland-Altman Options", status='info', width = 4,
                   selectInput('batype', h5('Bland-Altman Plot Type'), 
                               choices=list('0.5*(X+Y) vs. Y-X' = 3,
                                            'X vs. Y-X' = 1,
@@ -89,11 +89,10 @@ dashboardPage(
                   )
       ),
       tabItem(tabName = "subitem2",
-              box(title = "Scatter Plot", status='info',
-                  plotOutput("plot2"),
-                  verbatimTextOutput("info2")
+              box(title = "Scatter Plot", status='info', width = 8,
+                  plotOutput("plot2")
                   ),
-              box(title = "Scatter Plot Options", status='info',
+              box(title = "Scatter Plot Options", status='info', width = 4,
                   selectInput('regmodel', h5('Regression Model'), 
                               choices=list('Ordinary Least Square' = 'LinReg',
                                            'Weighted Ordinary Least Square' = 'WLinReg',
@@ -146,7 +145,7 @@ dashboardPage(
       ),
       tabItem(tabName = "download",
               radioButtons('format', h5('Document format'), 
-                           c('Adobe PDF','HTML', 'Microsoft Word'),
+                           c('PDF', 'HTML', 'Word'),
                            inline = TRUE),
               downloadButton('downloadReport')
               )
