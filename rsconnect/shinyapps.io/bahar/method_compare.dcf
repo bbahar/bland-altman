@@ -1,8 +1,8 @@
 name: method_compare
 account: bahar
 server: shinyapps.io
-bundleId: 331378
-url: https://bahar.shinyapps.io/method_compare
-when: 1450142551.31716
+bundleId: 346661
+url: https://bahar.shinyapps.io/method_compare/
+when: 1452381541.24671
 asMultiple: FALSE
 asStatic: FALSE

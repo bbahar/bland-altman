@@ -2,6 +2,7 @@ library(shiny)
 library(mcr)
 library(shinydashboard)
 library(rhandsontable)
+library(rmarkdown)
 
 shinyServer(function(input, output, session) {
   
@@ -81,8 +82,7 @@ shinyServer(function(input, output, session) {
       owd <- setwd(tempdir())
       on.exit(setwd(owd))
       file.copy(src, 'report.Rmd')
-      library(rmarkdown)
-      out <- render('report.Rmd', switch(
+      out <- rmarkdown::render('report.Rmd', switch(
         input$format,
         PDF = pdf_document(), HTML = html_document(), Word = word_document()
       ))

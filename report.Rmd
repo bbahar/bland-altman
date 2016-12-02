@@ -5,57 +5,58 @@ date: '`r Sys.Date()`'
 output: pdf_document
 ---
 
+```{r regression plot, echo=FALSE, results='markup', fig.show='asis'}
+library(mcr)
+a <- datasetInput()
+if (is.null(a)) {
+return(NULL)} else {
+names(a) <- c("M1", "M2")
+data1<- mcreg(a$M1,a$M2, error.ratio = input$syx, 
+method.reg = input$regmodel, method.ci = input$cimethod,
+method.bootstrap.ci = input$metbootci)
+MCResult.plot(data1, ci.area=input$ciarea, 
+add.legend=input$legend, identity=input$identity,
+add.cor=input$addcor, x.lab=input$m1,
+y.lab=input$m2, cor.method=input$cormet, 
+equal.axis = TRUE, add.grid = TRUE)
+}
+```
+
 ```{r statistics, echo=FALSE, comment = '', warning = FALSE, message = FALSE}
 library(mcr)
 library(pander)
 a <- datasetInput()
-    if (is.null(a)) {
-      return(NULL)} else {
-        names(a) <- c("M1", "M2")
-        data1 <- mcreg(a$M1, a$M2, error.ratio = input$syx, 
-                      method.reg = input$regmodel, method.ci = input$cimethod,
-                      method.bootstrap.ci = input$metbootci,
-                      mref.name = input$var1, mtest.name = input$var2)
-        pander(getCoefficients(data1))
-      }
-```
-
-```{r regression plot, echo=FALSE, results='markup'}
-library(mcr)
-a <- datasetInput()
-    if (is.null(a)) {
-      return(NULL)} else {
-        names(a) <- c("M1", "M2")
-        data1<- mcreg(a$M1,a$M2, error.ratio = input$syx, 
-                      method.reg = input$regmodel, method.ci = input$cimethod,
-                      method.bootstrap.ci = input$metbootci)
-        MCResult.plot(data1, ci.area=input$ciarea, 
-             add.legend=input$legend, identity=input$identity,
-             add.cor=input$addcor, x.lab=input$m1,
-             y.lab=input$m2, cor.method=input$cormet, 
-             equal.axis = TRUE, add.grid = TRUE)
-      }
+if (is.null(a)) {
+return(NULL)} else {
+names(a) <- c("M1", "M2")
+data1 <- mcreg(a$M1, a$M2, error.ratio = input$syx, 
+method.reg = input$regmodel, method.ci = input$cimethod,
+method.bootstrap.ci = input$metbootci,
+mref.name = input$var1, mtest.name = input$var2)
+pander(getCoefficients(data1))
+}
 ```
 
 ```{r BA plot, echo=FALSE, results='markup'}
 library(mcr)
 a <- datasetInput()
-    if (is.null(a)) {
-      return(NULL)} else {
-        names(a) <- c("M1", "M2")
-        data1 <- mcreg(a$M1, a$M2,
-                      mref.name = input$m1, mtest.name = input$m2)
-        MCResult.plotDifference(data1, plot.type = input$batype, add.grid = TRUE)
-      }
+if (is.null(a)) {
+return(NULL)} else {
+names(a) <- c("M1", "M2")
+data1 <- mcreg(a$M1, a$M2,
+mref.name = input$m1, mtest.name = input$m2)
+MCResult.plotDifference(data1, plot.type = input$batype, add.grid = TRUE)
+}
 ```
+
 
 #### Data is processed using R language^1^, shiny web application framework^2^ and mcr package^3^. Shinydashboard^4^ and rhandsontable^5^ are used for website construction. Rmarkdown^6^ is used for converting results in to document files.
 
 ##### References and packages:
 
-1. R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
-2. shiny: Web Application Framework for R. R package version 0.12.2. URL http://CRAN.R-project.org/package=shiny
-3. mcr: Method Comparison Regression. R package version 1.2.1. URL http://CRAN.R-project.org/package=mcr
-4. shinydashboard: Create Dashboards with 'Shiny'. R package version 0.5.1. URL http://rstudio.github.io/shinydashboard/.
-5. rhandsontable: Interface to the 'Handsontable.js' Library. R package version 0.2.1. URL http://jrowen.github.io/rhandsontable/.
-6. rmarkdown: Dynamic Documents for R. R package version 0.8.1. URL http://rmarkdown.rstudio.com
+1. R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
+2. shiny: Web Application Framework for R. http://CRAN.R-project.org/package=shiny
+3. mcr: Method Comparison Regression. http://CRAN.R-project.org/package=mcr
+4. shinydashboard: Create Dashboards with 'Shiny'. http://rstudio.github.io/shinydashboard/.
+5. rhandsontable: Interface to the 'Handsontable.js' Library. http://jrowen.github.io/rhandsontable/.
+6. rmarkdown: Dynamic Documents for R. http://rmarkdown.rstudio.com

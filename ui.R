@@ -2,6 +2,7 @@ library(shiny)
 library(mcr)
 library(shinydashboard)
 library(rhandsontable)
+library(rmarkdown)
 
 dashboardPage(
   dashboardHeader(title = "Method Comparison"),
@@ -43,22 +44,17 @@ dashboardPage(
               h4('References and packages:'),
               h5("1. R: A language and environment for statistical computing. 
                  R Foundation for Statistical Computing, Vienna, Austria. 
-                 URL https://www.R-project.org/"),
+                 https://www.R-project.org/"),
               h5("2. shiny: Web Application Framework for R. 
-                 R package version 0.12.2 
-                 URL http://CRAN.R-project.org/package=shiny/"),
+                 http://CRAN.R-project.org/package=shiny/"),
               h5("3. mcr: Method Comparison Regression. 
-                 R package version 1.2.1 
-                 URL http://CRAN.R-project.org/package=mcr/"),
+                 http://CRAN.R-project.org/package=mcr/"),
               h5("4. shinydashboard: Create Dashboards with 'Shiny'. 
-                 R package version 0.5.1 
-                 URL http://rstudio.github.io/shinydashboard/"),
+                 http://rstudio.github.io/shinydashboard/"),
               h5("5. rhandsontable: Interface to the 'Handsontable.js' Library. 
-                 R package version 0.2.1 
-                 URL http://jrowen.github.io/rhandsontable/"),
+                 http://jrowen.github.io/rhandsontable/"),
               h5("6. rmarkdown: Dynamic Documents for R.
-                 R package version 0.8.1
-                 URL http://rmarkdown.rstudio.com")
+                 http://rmarkdown.rstudio.com")
               ),
       tabItem(tabName = "data",
               box(title = "Enter Data", status = 'info',
