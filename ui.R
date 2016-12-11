@@ -44,15 +44,15 @@ dashboardPage(
               h4('References and packages:'),
               h5("1. R: A language and environment for statistical computing. 
                  R Foundation for Statistical Computing, Vienna, Austria. 
-                 https://www.R-project.org/"),
+                 https://www.R-project.org"),
               h5("2. shiny: Web Application Framework for R. 
-                 http://CRAN.R-project.org/package=shiny/"),
+                 http://CRAN.R-project.org/package=shiny"),
               h5("3. mcr: Method Comparison Regression. 
-                 http://CRAN.R-project.org/package=mcr/"),
+                 http://CRAN.R-project.org/package=mcr"),
               h5("4. shinydashboard: Create Dashboards with 'Shiny'. 
-                 http://rstudio.github.io/shinydashboard/"),
+                 http://rstudio.github.io/shinydashboard"),
               h5("5. rhandsontable: Interface to the 'Handsontable.js' Library. 
-                 http://jrowen.github.io/rhandsontable/"),
+                 http://jrowen.github.io/rhandsontable"),
               h5("6. rmarkdown: Dynamic Documents for R.
                  http://rmarkdown.rstudio.com")
               ),
@@ -121,7 +121,7 @@ dashboardPage(
                                                          'Spearman'='spearman')
                     )
                     ),
-                    column(6, numericInput('syx', h5('Sy/Sx'), value=1)
+                    column(6, numericInput('syx', h5('Sy/Sx'), value = 1)
                            )
                   ),
                   fixedRow(

@@ -54,9 +54,9 @@ MCResult.plotDifference(data1, plot.type = input$batype, add.grid = TRUE)
 
 ##### References and packages:
 
-1. R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
-2. shiny: Web Application Framework for R. http://CRAN.R-project.org/package=shiny
-3. mcr: Method Comparison Regression. http://CRAN.R-project.org/package=mcr
-4. shinydashboard: Create Dashboards with 'Shiny'. http://rstudio.github.io/shinydashboard/.
-5. rhandsontable: Interface to the 'Handsontable.js' Library. http://jrowen.github.io/rhandsontable/.
-6. rmarkdown: Dynamic Documents for R. http://rmarkdown.rstudio.com
+1. R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. Version: `r getRversion()` URL: https://www.R-project.org
+2. shiny: Web Application Framework for R. Version `r packageDescription("shiny")$Version` URL: http://CRAN.R-project.org/package=shiny
+3. mcr: Method Comparison Regression. Version: `r packageDescription("mcr")$Version` URL: http://CRAN.R-project.org/package=mcr
+4. shinydashboard: Create Dashboards with 'Shiny'. Version: `r packageDescription("shinydashboard")$Version` URL: http://rstudio.github.io/shinydashboard
+5. rhandsontable: Interface to the 'Handsontable.js' Library. Version: `r packageDescription("rhandsontable")$Version` URL: http://jrowen.github.io/rhandsontable
+6. rmarkdown: Dynamic Documents for R. Version: `r packageDescription("rmarkdown")$Version` URL: http://rmarkdown.rstudio.com
