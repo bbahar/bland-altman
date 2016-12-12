@@ -32,7 +32,7 @@ dashboardPage(
       tabItem(tabName = "info",
               h2("Method Comparison Using R and Shiny"),
               br(),
-              h4('This website is a product of R programming language(1) and shiny(2) web application framework. Statistics are based on mcr package(3). Shinydashboard(4) and rhandsontable(5) are used for website construction. Rmarkdown(6) is used for converting results in to document files'),
+              h4('This website is a product of R programming language(1) and shiny(2) web application framework. Statistics are based on mcr package(3). Shinydashboard(4), rhandsontable(5) and pander(6) are used for website construction. Rmarkdown(7) is used for converting results in to document files'),
               br(),
               h4('How to:'),
               h4('1. Copy/paste or manually enter your data using the "Data" tab and 
@@ -53,7 +53,9 @@ dashboardPage(
                  http://rstudio.github.io/shinydashboard"),
               h5("5. rhandsontable: Interface to the 'Handsontable.js' Library. 
                  http://jrowen.github.io/rhandsontable"),
-              h5("6. rmarkdown: Dynamic Documents for R.
+              h5("6. pander: An R Pandoc Writer. 
+                 http://rapporter.github.io/pander"),
+              h5("7. rmarkdown: Dynamic Documents for R.
                  http://rmarkdown.rstudio.com")
               ),
       tabItem(tabName = "data",

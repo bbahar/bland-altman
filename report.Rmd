@@ -50,7 +50,7 @@ MCResult.plotDifference(data1, plot.type = input$batype, add.grid = TRUE)
 ```
 
 
-#### Data is processed using R language^1^, shiny web application framework^2^ and mcr package^3^. Shinydashboard^4^ and rhandsontable^5^ are used for website construction. Rmarkdown^6^ is used for converting results in to document files.
+#### Data is processed using R language^1^, shiny web application framework^2^ and mcr package^3^. shinydashboard^4^, rhandsontable^5^ and pander^6^ are used for website construction. Rmarkdown^7^ is used for converting results in to document files.
 
 ##### References and packages:
 
@@ -59,4 +59,5 @@ MCResult.plotDifference(data1, plot.type = input$batype, add.grid = TRUE)
 3. mcr: Method Comparison Regression. Version: `r packageDescription("mcr")$Version` URL: http://CRAN.R-project.org/package=mcr
 4. shinydashboard: Create Dashboards with 'Shiny'. Version: `r packageDescription("shinydashboard")$Version` URL: http://rstudio.github.io/shinydashboard
 5. rhandsontable: Interface to the 'Handsontable.js' Library. Version: `r packageDescription("rhandsontable")$Version` URL: http://jrowen.github.io/rhandsontable
-6. rmarkdown: Dynamic Documents for R. Version: `r packageDescription("rmarkdown")$Version` URL: http://rmarkdown.rstudio.com
+6. pander: An R Pandoc Writer. Version: `r packageDescription("pander")$Version` URL: http://rapporter.github.io/pander
+7. rmarkdown: Dynamic Documents for R. Version: `r packageDescription("rmarkdown")$Version` URL: http://rmarkdown.rstudio.com
