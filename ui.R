@@ -81,7 +81,7 @@ dashboardPage(
                   )
       ),
       tabItem(tabName = "subitem1",
-              box(title = "Bland-Altman Plot", status='info', width = 8,
+              box(title = "Bland-Altman Plot", status = 'info', width = 8,
                   plotOutput("plot1")
                   ),
               box(title = "Options", status='info', width = 4,
@@ -91,10 +91,9 @@ dashboardPage(
                                            'rank(X) vs. Y-X' = 5,
                                            '0.5*(X+Y) vs. (Y-X)/X' = 4,                                       
                                            'X vs. (Y-X)/X' = 2,
-                                           'rank(X) vs. (Y-X)/X' = 6
-#                                           ,
-#                                           'sqrt(X*Y) vs. Y/X' = 7,
-#                                           '0.5*(X+Y) vs. (Y-X) / (0.5*(X+Y))' = 8
+                                           'rank(X) vs. (Y-X)/X' = 6,
+                                           'sqrt(X*Y) vs. Y/X' = 7,
+                                           '0.5*(X+Y) vs. (Y-X) / (0.5*(X+Y))' = 8
                                            )
                               )
                   )
@@ -123,16 +122,16 @@ dashboardPage(
                            )
                     ,
                     column(6, selectInput('metbootci',h5('Bootstrap CI Method'),
-                                          choices = list('BCa'='BCa',
-                                                         'Quantile'='quantile')
+                                          choices = list('BCa' = 'BCa',
+                                                         'Quantile' = 'quantile')
                                           )
                            )
                   ),
                   fixedRow(
                     column(6, selectInput('cormet',h5('Correlation Method'),
-                                          choices = list('Pearson'='pearson',
-                                                         'Spearman'='spearman',
-                                                         'Kendall'='kendall'
+                                          choices = list('Pearson' = 'pearson',
+                                                         'Spearman' = 'spearman',
+                                                         'Kendall' = 'kendall'
                                           )
                     )
                     ),
@@ -165,12 +164,12 @@ dashboardPage(
             )            
             ),
       tabItem(tabName = "stats",
-              box(title = "Statistics", status='info', width = 12,
+              box(title = "Statistics", status = 'info', width = 12,
               verbatimTextOutput("summary")
               )
       ),
       tabItem(tabName = "download",
-              box(title = "Download Report", status='info',
+              box(title = "Download Report", status = 'info',
               radioButtons('format', h5('Document format'), 
                            c('PDF', 'HTML'),
                            inline = TRUE),
