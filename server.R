@@ -8,8 +8,8 @@ shinyServer(function(input, output, session) {
   
   datasetInput <- reactive({
     if (is.null(input$hot)) {
-      mat <- data.frame('X'= round(c(rep(NA, 10)), digits = 2),
-                        'Y'= round(c(rep(NA, 10)), digits = 2))
+      mat <- data.frame('X'= signif(c(rep(NA, 10)), digits = input$S1),
+                        'Y'= signif(c(rep(NA, 10)), digits = input$S1))
     } else {
       mat <- hot_to_r(input$hot)
     }
@@ -88,9 +88,15 @@ shinyServer(function(input, output, session) {
   
   output$hot <- renderRHandsontable({
     a <- datasetInput()
+    if(input$S1==0) {a_1 = '0'}
+    if(input$S1==1) {a_1 = '0.0'}
+    if(input$S1==2) {a_1 = '0.00'}
+    if(input$S1==3) {a_1 = '0.000'}
+    if(input$S1==4) {a_1 = '0.0000'}
+    if(input$S1==5) {a_1 = '0.00000'}
     rhandsontable(a, height = 482) %>%
-      hot_col(col = 'X', format = '0.00', type = 'numeric') %>%
-      hot_col(col = 'Y', format = '0.00', type = 'numeric')
+      hot_col(col = 'X', format = a_1, type = 'numeric') %>%
+      hot_col(col = 'Y', format = a_1, type = 'numeric')
     
   })
   
