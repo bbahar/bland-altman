@@ -78,7 +78,7 @@ dashboardPage(
                             value = 'Reference Method'),
                   textInput('m2', label = h4('Y'),
                             value = 'Test Method'),
-                  sliderInput('S1', h4('Significance Level'), min=0, max=5, value = 2)
+                  sliderInput('S1', h4('Significance Level'), min= 1, max= 5, value = 2)
                   )
       ),
       tabItem(tabName = "subitem1",

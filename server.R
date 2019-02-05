@@ -25,7 +25,7 @@ shinyServer(function(input, output, session) {
                        mref.name = input$m1, mtest.name = input$m2, 
                        na.rm = TRUE), silent = TRUE)
         try(MCResult.plotDifference(data1, plot.type = input$batype,
-                                add.grid = TRUE), silent = TRUE)
+                                add.grid = TRUE, digits = input$S1), silent = TRUE)
         
       }
     
@@ -88,7 +88,6 @@ shinyServer(function(input, output, session) {
   
   output$hot <- renderRHandsontable({
     a <- datasetInput()
-    if(input$S1==0) {a_1 = '0'}
     if(input$S1==1) {a_1 = '0.0'}
     if(input$S1==2) {a_1 = '0.00'}
     if(input$S1==3) {a_1 = '0.000'}
