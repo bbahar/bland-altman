@@ -33,8 +33,9 @@ dashboardPage(
       tabItem(tabName = "info",
               h2("Method Comparison and Bias Estimation Using R and Shiny"),
               br(),
-              h4('This website is a product of R programming language(1) and shiny(2) web application framework. Statistics are based on mcr package(3). Shinydashboard(4), rhandsontable(5) and pander(6) are used for website construction. Rmarkdown(7) is used for converting results into document files.'),
-#              br(),
+              h4('This website is a product of R programming language(1) and shiny(2) web application framework. 
+                 Statistics are based on mcr package(3). Shinydashboard(4), rhandsontable(5) and pander(6) are used 
+                 for website construction. Rmarkdown(7) is used for converting results into document files.'),
               h4('How to:'),
               h4('1. Copy/paste or manually enter your data using the "Data" tab and 
                  enter method names.'),
@@ -66,8 +67,15 @@ dashboardPage(
                  a('http://rmarkdown.rstudio.com',
                  href = "http://rmarkdown.rstudio.com")),
               br(),
-              h4('For any questions or concerns please contact:', 
-                 a("Burak Bahar, MD", href = "mailto:burakbaharmd@gmail.com"))
+              h4('To Read The Article/Cite:'),
+              h5("",
+                 a("Bahar B, Tuncel AF, Holmes EW, Holmes DT. 
+                   An interactive website for analytical method comparison and bias estimation. 
+                   Clinical biochemistry. 2017 Dec 1;50(18):1025-9.", 
+                   href = "https://www.sciencedirect.com/science/article/pii/S0009912017304563")),
+              br(),
+              h5('For questions:', 
+                 a("Bahar B", href = "mailto:burakbaharmd@gmail.com"))
               ),
       tabItem(tabName = "data",
               box(title = "Enter Data", status = 'info',

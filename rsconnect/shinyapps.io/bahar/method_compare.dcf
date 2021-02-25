@@ -5,8 +5,8 @@ account: bahar
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 69167
-bundleId: 1827841
+bundleId: 4269005
 url: https://bahar.shinyapps.io/method_compare/
-when: 1548108850.68116
+when: 1614217454.68146
 asMultiple: FALSE
 asStatic: FALSE
